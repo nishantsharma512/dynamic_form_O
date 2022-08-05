@@ -54,7 +54,7 @@ function CustomerInfo({handleCustomerInfoChange,handleContactChange,handleContac
                       <Button variant='outlined' color={'inherit'} onClick={()=>toggleDrawer("right", false)}>Cancel</Button>
                   </Grid>
                   <Grid item>
-                      <Button variant='contained' type='submit' color={'inherit'}>Create</Button>
+                      <Button variant='contained' type='submit' color={'inherit'} >Create</Button>
                   </Grid>
               </Grid>
             </Grid>

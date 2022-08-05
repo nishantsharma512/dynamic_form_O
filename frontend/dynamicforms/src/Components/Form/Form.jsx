@@ -26,7 +26,7 @@ function Form(props) {
                       default: return state
           }
         }
-        const [state,dispatch]=useReducer(formReducer,{
+        const [state,dispatch]=useReducer(formReducer,{ 
           showCustomer:true,
           showLocation:false,
           slide:{right: false},
@@ -56,6 +56,7 @@ function Form(props) {
 
           return isCustomerInfoInvalid || isContactsInvalid
         }
+        
         const contactValidate=()=>{
           let contactErrors=[]
           state.contacts.map((contact,ci)=>{
@@ -237,11 +238,24 @@ function Form(props) {
 
 
   /* handleSubmit code start */
-    const handleSubmit=(e)=>{
+    const handleSubmit=async (e)=>{
         e.preventDefault()
         customerInfoValidate()
-        contactValidate()
-        isFormInvalid()?console.log("Form is invalid"):console.log("Form is submitted")
+        contactValidate() 
+    
+      
+        if(!isFormInvalid())
+        {
+          const post={
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(state)
+          }
+          
+          const response=await fetch(`http://localhost:2000/customerInfo`,post)
+          
+        }
+        /* isFormInvalid()?console.log("Form is invalid"):http://localhost:2000 */
        
         
     }
@@ -255,7 +269,6 @@ function Form(props) {
         <>
         <Grid container>
           <Grid item xs={12} display={'flex'} justifyContent={'flex-end'}>
-
             <Button  onClick={()=>toggleDrawer("right", true)} variant="outlined"  startIcon={<AddIcon />}>
                 Add New Customer
               </Button>
