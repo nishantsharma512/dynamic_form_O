@@ -21,7 +21,7 @@ function Form(props) {
                         case "setCustomerInfoErrors":
                           return {...state,customerInfoErrors:action.payload}
                           case "setContactErrors":
-                          return {...state,contactErrors:action.payload}
+                            return {...state,contactErrors:action.payload}
                          
                       default: return state
           }
@@ -82,7 +82,7 @@ function Form(props) {
               {
                 contactErrors[ci].contactMethods[cmi].contactMethodType="Required"
               }
-              if(!contactMethod.contactMethodType)
+              if(!contactMethod.contactDetail)
               {
                 contactErrors[ci].contactMethods[cmi].contactDetail="Contact detail required"
               }
@@ -253,8 +253,9 @@ function Form(props) {
           }
           
           const response=await fetch(`http://localhost:2000/customerInfo`,post)
-          
+          toggleDrawer("right", false)
         }
+        
         /* isFormInvalid()?console.log("Form is invalid"):http://localhost:2000 */
        
         

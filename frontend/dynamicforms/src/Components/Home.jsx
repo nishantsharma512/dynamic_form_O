@@ -7,7 +7,7 @@ function Home(props) {
  
     return (
         <>
-          <Grid container>
+          <Grid container >
             <Grid item xs={12} >
               <Box display="flex" justifyContent="flex-end">
                 <Form/>     
